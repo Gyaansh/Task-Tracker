@@ -6,6 +6,7 @@ export const getTasks = async (req, res, next) => {
     const tasks = await Task.find().sort({ createdAt: -1 });
     res.status(200).json({ success: true, count: tasks.length, data: tasks });
   } catch (error) {
+    console.error('[getTasks] Failed to fetch tasks:', error.message);
     next(error);
   }
 };
@@ -21,10 +22,10 @@ export const getTaskById = async (req, res, next) => {
 
     res.status(200).json({ success: true, data: task });
   } catch (error) {
-    // Handle invalid ObjectId
     if (error.kind === 'ObjectId') {
       return res.status(400).json({ success: false, message: 'Invalid task ID' });
     }
+    console.error(`[getTaskById] Failed to fetch task ${req.params.id}:`, error.message);
     next(error);
   }
 };
@@ -38,11 +39,12 @@ export const createTask = async (req, res, next) => {
 
     res.status(201).json({ success: true, data: task });
   } catch (error) {
-    // Handle validation errors
     if (error.name === 'ValidationError') {
       const messages = Object.values(error.errors).map((e) => e.message);
+      console.error('[createTask] Validation error:', messages.join(', '));
       return res.status(400).json({ success: false, message: messages.join(', ') });
     }
+    console.error('[createTask] Failed to create task:', error.message);
     next(error);
   }
 };
@@ -69,8 +71,10 @@ export const updateTask = async (req, res, next) => {
     }
     if (error.name === 'ValidationError') {
       const messages = Object.values(error.errors).map((e) => e.message);
+      console.error(`[updateTask] Validation error for ${req.params.id}:`, messages.join(', '));
       return res.status(400).json({ success: false, message: messages.join(', ') });
     }
+    console.error(`[updateTask] Failed to update task ${req.params.id}:`, error.message);
     next(error);
   }
 };
@@ -89,6 +93,7 @@ export const deleteTask = async (req, res, next) => {
     if (error.kind === 'ObjectId') {
       return res.status(400).json({ success: false, message: 'Invalid task ID' });
     }
+    console.error(`[deleteTask] Failed to delete task ${req.params.id}:`, error.message);
     next(error);
   }
 };
