@@ -9,7 +9,7 @@ const app = express();
 app.use(cors({
   origin: [
     'http://localhost:5173',
-    'https://task-tracker-opal-eta.vercel.app/',  // Vercel URL
+    'https://task-tracker-opal-eta.vercel.app',  // Vercel URL
   ],
 }));
 app.use(express.json());
