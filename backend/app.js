@@ -6,7 +6,12 @@ import errorHandler from './middleware/errorHandler.js';
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://task-tracker-opal-eta.vercel.app/',  // ← your Vercel URL
+  ],
+}));
 app.use(express.json());
 
 // Routes
