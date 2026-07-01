@@ -2,8 +2,10 @@
 
 @import "tailwindcss";
 
+/* Tailwind v4: enable dark mode via .dark class on <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --color-bg: #F8FAFC;
   --color-primary: #2563EB;
   --color-primary-hover: #1D4ED8;
 }
@@ -13,28 +15,30 @@
 }
 
 body {
-  background-color: var(--color-bg);
   font-family: 'Inter', sans-serif;
-  color: #1e293b;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
-}
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 3px;
+/* Smooth color transitions on theme switch */
+*, *::before, *::after {
+  transition-property: color, background-color, border-color, box-shadow, transform;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
 }
 
-/* Smooth transitions globally */
-* {
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+/* Override for things that should NOT be slow to respond (hover/animation states) */
+button, a, [role="button"] {
+  transition-duration: 150ms;
 }
+
+/* Custom scrollbar — Light */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+
+/* Custom scrollbar — Dark */
+.dark ::-webkit-scrollbar-track { background: #1e293b; }
+.dark ::-webkit-scrollbar-thumb { background: #475569; }
 
 /* Focus ring */
 :focus-visible {

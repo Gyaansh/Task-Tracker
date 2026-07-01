@@ -54,7 +54,21 @@ const TaskForm = ({ task, onSubmit, onCancel, isLoading }) => {
   };
 
   const selectClass =
-    'w-full px-3 py-2 text-sm border border-slate-200 rounded-lg bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200';
+    'w-full px-3 py-2 text-sm border rounded-lg ' +
+    'bg-white dark:bg-slate-800 ' +
+    'text-slate-800 dark:text-slate-100 ' +
+    'border-slate-200 dark:border-slate-600 ' +
+    'focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ' +
+    'transition-all duration-150';
+
+  const textareaClass =
+    'w-full px-3 py-2 text-sm border rounded-lg resize-none ' +
+    'bg-white dark:bg-slate-800 ' +
+    'text-slate-800 dark:text-slate-100 ' +
+    'placeholder-slate-400 dark:placeholder-slate-500 ' +
+    'border-slate-200 dark:border-slate-600 ' +
+    'focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ' +
+    'transition-all duration-150';
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -72,7 +86,7 @@ const TaskForm = ({ task, onSubmit, onCancel, isLoading }) => {
 
       {/* Description */}
       <div className="flex flex-col gap-1">
-        <label htmlFor="description" className="text-sm font-medium text-slate-700">
+        <label htmlFor="description" className="text-sm font-medium text-slate-700 dark:text-slate-300">
           Description
         </label>
         <textarea
@@ -82,15 +96,14 @@ const TaskForm = ({ task, onSubmit, onCancel, isLoading }) => {
           onChange={handleChange}
           placeholder="Add a description (optional)"
           rows={3}
-          className="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg bg-white text-slate-800 placeholder-slate-400
-            focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
+          className={textareaClass}
         />
       </div>
 
       {/* Status + Priority */}
       <div className="grid grid-cols-2 gap-4">
         <div className="flex flex-col gap-1">
-          <label htmlFor="status" className="text-sm font-medium text-slate-700">
+          <label htmlFor="status" className="text-sm font-medium text-slate-700 dark:text-slate-300">
             Status
           </label>
           <select id="status" name="status" value={form.status} onChange={handleChange} className={selectClass}>
@@ -101,7 +114,7 @@ const TaskForm = ({ task, onSubmit, onCancel, isLoading }) => {
         </div>
 
         <div className="flex flex-col gap-1">
-          <label htmlFor="priority" className="text-sm font-medium text-slate-700">
+          <label htmlFor="priority" className="text-sm font-medium text-slate-700 dark:text-slate-300">
             Priority
           </label>
           <select id="priority" name="priority" value={form.priority} onChange={handleChange} className={selectClass}>

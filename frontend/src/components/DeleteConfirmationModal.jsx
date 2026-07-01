@@ -20,26 +20,28 @@ const DeleteConfirmationModal = ({ isOpen, task, onConfirm, onCancel, isLoading 
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 dark:bg-black/70 backdrop-blur-sm"
       onClick={onCancel}
       role="dialog"
       aria-modal="true"
     >
       <div
-        className="bg-white rounded-2xl shadow-xl w-full max-w-sm p-6 flex flex-col gap-5"
+        className="bg-white dark:bg-slate-900 rounded-2xl shadow-xl dark:shadow-2xl dark:shadow-black/50
+          border border-transparent dark:border-slate-700
+          w-full max-w-sm p-6 flex flex-col gap-5"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Icon */}
-        <div className="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mx-auto">
-          <AlertTriangle size={24} className="text-red-500" />
+        <div className="w-12 h-12 bg-red-50 dark:bg-red-900/30 rounded-xl flex items-center justify-center mx-auto">
+          <AlertTriangle size={24} className="text-red-500 dark:text-red-400" />
         </div>
 
         {/* Text */}
         <div className="text-center">
-          <h3 className="text-lg font-semibold text-slate-800 mb-1">Delete Task</h3>
-          <p className="text-sm text-slate-500">
+          <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-1">Delete Task</h3>
+          <p className="text-sm text-slate-500 dark:text-slate-400">
             Are you sure you want to delete{' '}
-            <span className="font-medium text-slate-700">"{task?.title}"</span>?
+            <span className="font-medium text-slate-700 dark:text-slate-200">"{task?.title}"</span>?
             This action cannot be undone.
           </p>
         </div>

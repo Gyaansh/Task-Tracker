@@ -5,14 +5,19 @@ import { Toaster } from 'react-hot-toast';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
+import useTheme from './hooks/useTheme';
 
 const App = () => {
-  // Lift modal open state so Navbar's Add Task button can trigger it
   const [taskModalOpen, setTaskModalOpen] = useState(false);
+  const { theme, toggleTheme, isDark } = useTheme();
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
-      <Navbar onAddTask={() => setTaskModalOpen(true)} />
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
+      <Navbar
+        onAddTask={() => setTaskModalOpen(true)}
+        isDark={isDark}
+        onToggleTheme={toggleTheme}
+      />
 
       <Routes>
         <Route
@@ -36,6 +41,9 @@ const App = () => {
             fontFamily: 'Inter, sans-serif',
             fontSize: '14px',
             borderRadius: '10px',
+            background: isDark ? '#1e293b' : '#ffffff',
+            color: isDark ? '#f1f5f9' : '#1e293b',
+            border: `1px solid ${isDark ? '#334155' : '#e2e8f0'}`,
           },
         }}
       />

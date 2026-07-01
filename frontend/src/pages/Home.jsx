@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import toast from 'react-hot-toast';
-import { LayoutDashboard, Clock, Loader2 as Spinner, CheckCircle2, ListTodo } from 'lucide-react';
+import { Clock, Loader2 as Spinner, CheckCircle2, ListTodo } from 'lucide-react';
 
 import { fetchTasks, createTask, updateTask, deleteTask } from '../services/api';
 import TaskCard from '../components/TaskCard';
@@ -131,20 +131,44 @@ const Home = ({ onAddTask, taskModalOpen, onModalClose }) => {
     <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Welcome section */}
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-slate-800 mb-1">
+        <h1 className="text-2xl font-bold text-slate-800 dark:text-white mb-1">
           Good day! 👋
         </h1>
-        <p className="text-slate-500 text-sm">
+        <p className="text-slate-500 dark:text-slate-400 text-sm">
           Here's an overview of all your tasks.
         </p>
       </div>
 
       {/* Stats cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-        <StatsCard label="Total Tasks" count={stats.total} icon={ListTodo} colorClass="text-blue-600" bgClass="bg-blue-50" />
-        <StatsCard label="Pending" count={stats.pending} icon={Clock} colorClass="text-amber-600" bgClass="bg-amber-50" />
-        <StatsCard label="In Progress" count={stats.inProgress} icon={Spinner} colorClass="text-indigo-600" bgClass="bg-indigo-50" />
-        <StatsCard label="Completed" count={stats.completed} icon={CheckCircle2} colorClass="text-emerald-600" bgClass="bg-emerald-50" />
+        <StatsCard
+          label="Total Tasks"
+          count={stats.total}
+          icon={ListTodo}
+          colorClass="text-blue-600 dark:text-blue-400"
+          bgClass="bg-blue-50 dark:bg-blue-900/30"
+        />
+        <StatsCard
+          label="Pending"
+          count={stats.pending}
+          icon={Clock}
+          colorClass="text-amber-600 dark:text-amber-400"
+          bgClass="bg-amber-50 dark:bg-amber-900/30"
+        />
+        <StatsCard
+          label="In Progress"
+          count={stats.inProgress}
+          icon={Spinner}
+          colorClass="text-indigo-600 dark:text-indigo-400"
+          bgClass="bg-indigo-50 dark:bg-indigo-900/30"
+        />
+        <StatsCard
+          label="Completed"
+          count={stats.completed}
+          icon={CheckCircle2}
+          colorClass="text-emerald-600 dark:text-emerald-400"
+          bgClass="bg-emerald-50 dark:bg-emerald-900/30"
+        />
       </div>
 
       {/* Toolbar */}
