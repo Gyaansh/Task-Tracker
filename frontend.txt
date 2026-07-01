@@ -1,0 +1,141 @@
+=========================
+UI / UX DESIGN
+=========================
+
+The application should have a premium modern dashboard aesthetic.
+
+Theme:
+- Clean, minimal, professional
+- Inspired by Linear, Notion, Vercel Dashboard, GitHub, and Todoist
+- Soft neutral colors with one primary accent color
+- Plenty of whitespace
+- Rounded-xl cards
+- Smooth transitions and hover animations
+- Consistent spacing
+- Modern typography
+- Responsive from mobile to desktop
+
+Layout:
+
+Top Navbar
+- Logo (TaskFlow)
+- Search bar
+- Add Task button
+
+Dashboard
+
+Top section
+- Welcome message
+- Task statistics cards
+    • Total Tasks
+    • Pending
+    • In Progress
+    • Completed
+
+Below statistics
+- Search
+- Status Filter
+- Priority Filter
+- Sort Dropdown
+
+Task Grid
+- Responsive cards
+- 3 columns desktop
+- 2 tablet
+- 1 mobile
+
+Task Card Design
+
+Each card contains
+
+• Colored priority badge
+• Status badge
+• Task title
+• Description preview
+• Due date
+• Edit button
+• Delete button
+
+Card interactions
+
+- Lift slightly on hover
+- Smooth shadow transition
+- Click animation
+- Rounded corners
+
+Add/Edit Task
+
+Open inside a beautiful modal instead of navigating to another page.
+
+Modal includes
+
+- Modern inputs
+- Floating labels (optional)
+- Responsive layout
+- Cancel
+- Save Task
+
+Empty State
+
+Display a friendly illustration and message like:
+
+"You haven't created any tasks yet."
+
+Include a large "Create Task" button.
+
+Delete Confirmation
+
+Use a custom modal instead of browser confirm().
+
+Animations
+
+- Smooth page transitions
+- Fade-in cards
+- Toast notifications
+- Loading skeletons
+- Button hover animations
+
+Color Palette
+
+Background:
+#F8FAFC
+
+Cards:
+White
+
+Primary:
+#2563EB
+
+Success:
+Green
+
+Warning:
+Amber
+
+Danger:
+Red
+
+Text:
+Slate Gray
+
+Icons
+
+Use Lucide React icons.
+
+Avoid emoji icons.
+
+Accessibility
+
+Proper contrast
+
+Keyboard accessible
+
+Focus rings
+
+Responsive
+
+Works perfectly on
+320px
+768px
+1024px
+1440px
